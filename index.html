@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heyin Chen | Economist & PhD Candidate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #0f1c2e;
+    --ink-soft:  #2e3f55;
+    --mist:      #7a9ab5;
+    --tide:      #3d8fa6;
+    --foam:      #e8f4f8;
+    --sand:      #f5f0e8;
+    --paper:     #fafaf8;
+    --accent:    #1a6f8a;
+    --accent-lt: #d0eaf2;
+    --rule:      #d4e0e8;
+    --serif:     'EB Garamond', Georgia, serif;
+    --sans:      'DM Sans', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 60px;
+  }
+  .nav-logo {
+    font-family: var(--serif); font-size: 1.1rem; font-weight: 500;
+    color: var(--ink); text-decoration: none; letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-soft); text-decoration: none; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: stretch;
+    padding-top: 60px;
+    background: linear-gradient(135deg, var(--ink) 0%, #1a3a52 60%, #0d4a5e 100%);
+    position: relative; overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 50%, rgba(61,143,166,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 80% at 10% 80%, rgba(26,111,138,0.12) 0%, transparent 60%);
+  }
+  .hero-grid-overlay {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    width: 100%; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hero-text {
+    padding: 80px 64px 80px 80px;
+  }
+  .hero-label {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--mist); font-weight: 500; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-label::before {
+    content: ''; display: block; width: 32px; height: 1px; background: var(--mist);
+  }
+  h1 {
+    font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 500; color: #fff; line-height: 1.12; margin-bottom: 24px;
+  }
+  h1 em { font-style: italic; color: var(--mist); }
+  .hero-summary {
+    font-size: 1rem; color: rgba(255,255,255,0.72); max-width: 480px;
+    line-height: 1.8; margin-bottom: 40px;
+  }
+  .hero-cta {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block; padding: 11px 28px; border-radius: 3px;
+    font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase;
+    font-weight: 500; text-decoration: none; transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--tide); color: #fff;
+    border: 1px solid var(--tide);
+  }
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-outline {
+    background: transparent; color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+  .hero-visual {
+    padding: 80px 80px 80px 40px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px; padding: 16px 20px;
+    backdrop-filter: blur(8px);
+    animation: fadeSlideIn 0.8s ease both;
+  }
+  .stat-card:nth-child(1) { animation-delay: 0.1s; }
+  .stat-card:nth-child(2) { animation-delay: 0.25s; }
+  .stat-card:nth-child(3) { animation-delay: 0.4s; }
+  .stat-card:nth-child(4) { animation-delay: 0.55s; }
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateX(24px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .stat-number {
+    font-family: var(--serif); font-size: 1.7rem;
+    color: #fff; font-weight: 500;
+  }
+  .stat-label {
+    font-size: 0.78rem; color: var(--mist); letter-spacing: 0.05em;
+    margin-top: 2px;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 96px 0; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  .section-header { margin-bottom: 56px; }
+  .section-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500; margin-bottom: 8px;
+  }
+  h2 {
+    font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 500; color: var(--ink); line-height: 1.2;
+  }
+  .section-rule {
+    width: 48px; height: 2px; background: var(--tide); margin-top: 16px;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--sand); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: start; }
+  .about-info-block { display: flex; flex-direction: column; gap: 24px; }
+  .info-item { display: flex; flex-direction: column; gap: 4px; }
+  .info-label {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--mist); font-weight: 500;
+  }
+  .info-value { font-size: 0.92rem; color: var(--ink-soft); }
+  .info-value a { color: var(--accent); text-decoration: none; }
+  .info-value a:hover { text-decoration: underline; }
+  .about-divider { width: 1px; height: 60px; background: var(--rule); margin: 4px 0; }
+  .about-text p { font-size: 0.97rem; color: var(--ink-soft); margin-bottom: 16px; line-height: 1.85; }
+  .about-text p:last-child { margin-bottom: 0; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .tag {
+    font-size: 0.74rem; padding: 4px 12px; border-radius: 2px;
+    background: var(--accent-lt); color: var(--accent); font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── RESEARCH ── */
+  #research { background: var(--paper); }
+  .research-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .research-card {
+    border: 1px solid var(--rule); border-radius: 6px;
+    padding: 32px; background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .research-card:hover {
+    border-color: var(--tide);
+    box-shadow: 0 4px 24px rgba(61,143,166,0.1);
+  }
+  .research-card-accent {
+    width: 32px; height: 3px; background: var(--tide);
+    margin-bottom: 20px; border-radius: 2px;
+  }
+  .research-card h3 {
+    font-family: var(--serif); font-size: 1.1rem; font-weight: 500;
+    color: var(--ink); margin-bottom: 12px; line-height: 1.4;
+  }
+  .research-card p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.75; }
+  .research-methods { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+  .method-tag {
+    font-size: 0.7rem; padding: 3px 10px; border-radius: 2px;
+    background: var(--foam); color: var(--accent); font-weight: 500;
+  }
+
+  /* ── PUBLICATIONS ── */
+  #publications { background: var(--foam); }
+  .pub-list { display: flex; flex-direction: column; gap: 0; }
+  .pub-item {
+    display: grid; grid-template-columns: 48px 1fr;
+    gap: 20px; padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.2s;
+  }
+  .pub-item:first-child { border-top: 1px solid var(--rule); }
+  .pub-number {
+    font-family: var(--serif); font-size: 1.8rem; color: var(--rule);
+    font-weight: 400; line-height: 1; padding-top: 4px; text-align: right;
+  }
+  .pub-content {}
+  .pub-title {
+    font-family: var(--serif); font-size: 1rem; font-weight: 500;
+    color: var(--ink); line-height: 1.4; margin-bottom: 6px;
+    font-style: italic;
+  }
+  .pub-authors { font-size: 0.84rem; color: var(--ink-soft); margin-bottom: 6px; }
+  .pub-authors strong { color: var(--ink); font-weight: 600; }
+  .pub-meta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+  .pub-journal {
+    font-size: 0.78rem; color: var(--accent); font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  .pub-badge {
+    font-size: 0.68rem; padding: 2px 8px; border-radius: 2px;
+    font-weight: 600; letter-spacing: 0.05em;
+  }
+  .badge-published { background: #d4edda; color: #2d6a4f; }
+  .badge-rr       { background: #fff3cd; color: #856404; }
+  .badge-submitted { background: #e2e8f0; color: #475569; }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--paper); }
+  .exp-timeline { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 40px; padding: 36px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .exp-item:first-child { border-top: 1px solid var(--rule); }
+  .exp-meta { display: flex; flex-direction: column; gap: 6px; }
+  .exp-period {
+    font-size: 0.78rem; color: var(--mist); letter-spacing: 0.06em;
+    font-weight: 500; text-transform: uppercase;
+  }
+  .exp-org {
+    font-family: var(--serif); font-size: 0.95rem; color: var(--accent);
+    font-style: italic;
+  }
+  .exp-location { font-size: 0.78rem; color: var(--mist); }
+  .exp-content h3 {
+    font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 12px;
+  }
+  .exp-bullets { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .exp-bullets li {
+    font-size: 0.88rem; color: var(--ink-soft); line-height: 1.7;
+    padding-left: 16px; position: relative;
+  }
+  .exp-bullets li::before {
+    content: '—'; position: absolute; left: 0; color: var(--tide);
+    font-weight: 600;
+  }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--sand); }
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .edu-card {
+    background: #fff; border: 1px solid var(--rule); border-radius: 6px;
+    padding: 28px 28px 24px;
+    transition: border-color 0.2s;
+  }
+  .edu-card:hover { border-color: var(--tide); }
+  .edu-degree {
+    font-family: var(--serif); font-size: 1.05rem; font-weight: 500;
+    color: var(--ink); margin-bottom: 6px;
+  }
+  .edu-school { font-size: 0.88rem; color: var(--accent); font-weight: 500; margin-bottom: 4px; }
+  .edu-meta-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .edu-year { font-size: 0.78rem; color: var(--mist); font-weight: 500; }
+  .edu-gpa {
+    font-size: 0.74rem; padding: 3px 10px; border-radius: 2px;
+    background: var(--accent-lt); color: var(--accent); font-weight: 600;
+  }
+  .edu-courses {
+    font-size: 0.78rem; color: var(--ink-soft); line-height: 1.65;
+    border-top: 1px solid var(--rule); padding-top: 12px; margin-top: 4px;
+  }
+  .edu-courses span { font-weight: 500; color: var(--ink); }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--paper); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .skill-group { display: flex; flex-direction: column; gap: 14px; }
+  .skill-group-title {
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500;
+    padding-bottom: 10px; border-bottom: 2px solid var(--accent-lt);
+  }
+  .skill-item { display: flex; flex-direction: column; gap: 5px; }
+  .skill-name { font-size: 0.88rem; font-weight: 500; color: var(--ink); }
+  .skill-bar { height: 3px; background: var(--rule); border-radius: 2px; overflow: hidden; }
+  .skill-fill { height: 100%; background: var(--tide); border-radius: 2px;
+    transition: width 1s ease; }
+
+  /* ── CONFERENCES ── */
+  #conferences { background: var(--foam); }
+  .conf-list { display: flex; flex-direction: column; gap: 0; }
+  .conf-item {
+    display: grid; grid-template-columns: 120px 1fr;
+    gap: 24px; padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+  .conf-item:first-child { border-top: 1px solid var(--rule); }
+  .conf-year {
+    font-family: var(--serif); font-size: 1.1rem; color: var(--mist);
+    font-weight: 400; line-height: 1;
+  }
+  .conf-venue {
+    font-size: 0.75rem; color: var(--mist); margin-top: 3px; font-weight: 500;
+  }
+  .conf-content {}
+  .conf-title {
+    font-size: 0.92rem; font-weight: 500; color: var(--ink); margin-bottom: 4px;
+    font-family: var(--serif); font-style: italic;
+  }
+  .conf-location { font-size: 0.8rem; color: var(--mist); }
+
+  /* ── BEYOND ── */
+  #beyond { background: var(--sand); }
+  .beyond-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 24px;
+  }
+  .beyond-card {
+    background: #fff; border: 1px solid var(--rule); border-radius: 8px;
+    padding: 32px 28px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .beyond-card:hover {
+    border-color: var(--tide);
+    box-shadow: 0 4px 20px rgba(61,143,166,0.08);
+  }
+  .beyond-card--featured {
+    background: linear-gradient(145deg, #fff 60%, var(--foam));
+    border-color: var(--accent-lt);
+  }
+  .beyond-icon {
+    font-size: 2rem; margin-bottom: 16px; line-height: 1;
+  }
+  .beyond-card h3 {
+    font-family: var(--serif); font-size: 1.05rem; font-weight: 500;
+    color: var(--ink); margin-bottom: 12px; line-height: 1.35;
+  }
+  .beyond-card p {
+    font-size: 0.88rem; color: var(--ink-soft); line-height: 1.8;
+  }
+  .beyond-tags {
+    display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px;
+  }
+  .beyond-tags span {
+    font-size: 0.72rem; padding: 3px 11px; border-radius: 20px;
+    background: var(--accent-lt); color: var(--accent);
+    font-weight: 500; letter-spacing: 0.03em;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: linear-gradient(135deg, var(--ink) 0%, #1a3a52 100%);
+    padding: 96px 0;
+  }
+  #contact h2 { color: #fff; }
+  #contact .section-eyebrow { color: var(--mist); }
+  #contact .section-rule { background: var(--tide); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 56px; }
+  .contact-item { display: flex; flex-direction: column; gap: 6px; }
+  .contact-label {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--mist); font-weight: 500;
+  }
+  .contact-value { font-size: 1rem; color: rgba(255,255,255,0.85); }
+  .contact-value a { color: var(--tide); text-decoration: none; }
+  .contact-value a:hover { color: var(--mist); }
+  .contact-note {
+    font-size: 0.88rem; color: rgba(255,255,255,0.5);
+    max-width: 460px; line-height: 1.75; margin-top: 48px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); padding: 24px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-name {
+    font-family: var(--serif); font-size: 0.9rem; color: rgba(255,255,255,0.4);
+  }
+  .footer-note { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { gap: 20px; }
+    #hero { display: flex; flex-direction: column; min-height: auto; padding-bottom: 60px; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-text { padding: 60px 24px 40px; }
+    .hero-visual { padding: 0 24px 60px; }
+    .about-grid, .research-grid, .edu-grid, .skills-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 12px; }
+    .conf-item { grid-template-columns: 80px 1fr; gap: 16px; }
+    .beyond-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    .container { padding: 0 24px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Heyin Chen</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#conferences">Talks</a></li>
+    <li><a href="#beyond">Beyond</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-inner">
+  <div class="hero-text">
+    <div class="hero-label">PhD Candidate · Agricultural & Resource Economics</div>
+    <h1>Heyin<br><em>Chen</em></h1>
+    <p class="hero-summary">
+      Applied econometrician studying the intersection of resource economics,
+      environmental policy, and causal inference. Dissertation research spans
+      commercial fisheries fleet behavior and recreational charter markets.
+    </p>
+    <div class="hero-cta">
+      <a href="#research" class="btn btn-primary">View Research</a>
+      <a href="#contact" class="btn btn-outline">Contact</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="stat-card">
+      <div class="stat-number">6</div>
+      <div class="stat-label">Peer-Reviewed Publications</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2026</div>
+      <div class="stat-label">Expected PhD Graduation</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">1M+</div>
+      <div class="stat-label">VMS GPS Records Analyzed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">4</div>
+      <div class="stat-label">International Conference Presentations</div>
+    </div>
+  </div>
+  </div><!-- .hero-inner -->
+</section>
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">About</div>
+      <h2>Profile</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-info-block">
+        <div class="info-item">
+          <div class="info-label">Position</div>
+          <div class="info-value">PhD Candidate, ARE</div>
+        </div>
+        <div class="about-divider"></div>
+        <div class="info-item">
+          <div class="info-label">Institution</div>
+          <div class="info-value">University of California, Davis</div>
+        </div>
+        <div class="about-divider"></div>
+        <div class="info-item">
+          <div class="info-label">Fields</div>
+          <div class="info-value">Fisheries Economics · Environmental Policy · Applied Econometrics</div>
+        </div>
+        <div class="about-divider"></div>
+        <div class="info-item">
+          <div class="info-label">Email</div>
+          <div class="info-value"><a href="mailto:hyhchen@ucdavis.edu">hyhchen@ucdavis.edu</a></div>
+        </div>
+        <div class="about-divider"></div>
+        <div class="info-item">
+          <div class="info-label">Phone</div>
+          <div class="info-value">+1 (530) 204-8809</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <p>
+          I am a PhD candidate in Agricultural and Resource Economics at UC Davis, 
+          specializing in applied econometrics with a focus on marine and environmental resource 
+          management. My dissertation investigates how economic incentives shape the behavior 
+          of fishing fleets and charter firms under regulatory and market constraints.
+        </p>
+        <p>
+          My methodological toolkit centers on reduced-form causal identification — including 
+          Cragg's double hurdle models, Heckman selection models, panel fixed/mixed effects, 
+          difference-in-differences, synthetic control, and nested logit — applied to large-scale 
+          administrative datasets including NOAA Vessel Monitoring System (VMS) GPS tracking 
+          records, commercial fishing logbooks, and charter operator data.
+        </p>
+        <p>
+          Beyond fisheries, I have contributed to research on COVID-19 vaccine effectiveness 
+          in California prisons, the causal impacts of property rights in common pool resource 
+          management, and food systems resilience at the World Bank.
+        </p>
+        <div class="tag-list">
+          <span class="tag">Fisheries Economics</span>
+          <span class="tag">Causal Inference</span>
+          <span class="tag">Panel Econometrics</span>
+          <span class="tag">Environmental Policy</span>
+          <span class="tag">Marine Resources</span>
+          <span class="tag">Program Evaluation</span>
+          <span class="tag">Stata · R · Python</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Research</div>
+      <h2>Dissertation & Projects</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="research-grid">
+      <div class="research-card">
+        <div class="research-card-accent"></div>
+        <h3>Fuel Price Shocks and Fishing Fleet Behavior in the Atlantic HMS Pelagic Longline Fishery</h3>
+        <p>
+          Dissertation Chapter 1. Uses Cragg's double hurdle model on 16,000+ vessel-trip panel data 
+          (2013–2019) from the Atlantic highly migratory species fishery. Merges 1M+ VMS GPS records 
+          with commercial logbook data across 111 ports to estimate fuel price elasticities for 
+          trip participation (–0.57 to –0.82) and fishing intensity (–0.13 to –0.23). 
+          Documents heterogeneous effects by vessel size.
+        </p>
+        <div class="research-methods">
+          <span class="method-tag">Double Hurdle Model</span>
+          <span class="method-tag">VMS/Logbook Data</span>
+          <span class="method-tag">Fixed Effects</span>
+          <span class="method-tag">Heckman Selection</span>
+        </div>
+      </div>
+      <div class="research-card">
+        <div class="research-card-accent"></div>
+        <h3>Charter Fishing Firm Operational Decisions in Alaska</h3>
+        <p>
+          Dissertation Chapter 2. Examines Alaska charter halibut fishing firm behavior under 
+          IPHC regulatory constraints (Regions 2C and 3A, Catch Sharing Plan). Uses nested logit 
+          models to analyze participation and effort decisions (2005–2015), capturing how firms 
+          respond to bag limits, season restrictions, and quota policy changes.
+        </p>
+        <div class="research-methods">
+          <span class="method-tag">Nested Logit</span>
+          <span class="method-tag">Discrete Choice</span>
+          <span class="method-tag">Charter Fisheries</span>
+          <span class="method-tag">IPHC Regulations</span>
+        </div>
+      </div>
+      <div class="research-card">
+        <div class="research-card-accent"></div>
+        <h3>Private Property Rights and Common Pool Resource Management</h3>
+        <p>
+          Applies reduced-form causal analysis (DiD and Synthetic Control) to evaluate the effects 
+          of catch shares on marine fisheries status using 50+ years of panel data covering 170 
+          exclusive economic zones and 800+ species. Estimates marginal and average treatment 
+          effects using parametric and semiparametric methods with selection on unobservables.
+        </p>
+        <div class="research-methods">
+          <span class="method-tag">Diff-in-Diff</span>
+          <span class="method-tag">Synthetic Control</span>
+          <span class="method-tag">MTE</span>
+          <span class="method-tag">RAM Legacy DB</span>
+        </div>
+      </div>
+      <div class="research-card">
+        <div class="research-card-accent"></div>
+        <h3>COVID-19 Vaccine Effectiveness in California State Prisons</h3>
+        <p>
+          Estimated vaccine treatment effects using Cox proportional hazards models on 
+          person-day panel data covering 60,000+ individuals across 35 California prisons, 
+          finding effectiveness of 74% (first dose) and 97% (second dose). Applied quasi-experimental 
+          design with time-varying covariates to address selection bias and facility-level clustering.
+        </p>
+        <div class="research-methods">
+          <span class="method-tag">Cox PH Model</span>
+          <span class="method-tag">Diff-in-Diff</span>
+          <span class="method-tag">CDCR Data</span>
+          <span class="method-tag">Stata · R</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Publications</div>
+      <h2>Peer-Reviewed Work</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="pub-list">
+      <div class="pub-item">
+        <div class="pub-number">1</div>
+        <div class="pub-content">
+          <div class="pub-title">The Impact of Environmental Regulation, Shadow Economy, and Corruption on Environmental Quality: Theory and Empirical Evidence from China</div>
+          <div class="pub-authors"><strong>Heyin Chen</strong>, Yu Hao, Jingwei Li, Xiaojie Song. (2018).</div>
+          <div class="pub-meta">
+            <span class="pub-journal">Journal of Cleaner Production</span>
+            <span class="pub-badge badge-published">SCI · IF 5.651</span>
+          </div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-number">2</div>
+        <div class="pub-content">
+          <div class="pub-title">The Dynamic Relationship between Environmental Pollution, Economic Development and Public Health: Evidence from China</div>
+          <div class="pub-authors">Zhi-Nan Lu*, <strong>Heyin Chen*</strong>, Yu Hao, Jingyi Wang, Xiaojie Song, Toi Meng Mok. (2017). <em>(Co-first Author)</em></div>
+          <div class="pub-meta">
+            <span class="pub-journal">Journal of Cleaner Production, 166</span>
+            <span class="pub-badge badge-published">SCI · IF 5.651</span>
+          </div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-number">3</div>
+        <div class="pub-content">
+          <div class="pub-title">Will Income Inequality Affect Environmental Quality? Analysis Based on China's Provincial Panel Data</div>
+          <div class="pub-authors">Yu Hao, <strong>Heyin Chen</strong>, Qianxue Zhang. (2016).</div>
+          <div class="pub-meta">
+            <span class="pub-journal">Ecological Indicators, 67, 533–542</span>
+            <span class="pub-badge badge-published">SCI · IF 3.983</span>
+          </div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-number">4</div>
+        <div class="pub-content">
+          <div class="pub-title">On the Relationship between Water Use and Economic Growth in China: New Evidence from Simultaneous Equation Model Analysis</div>
+          <div class="pub-authors">Yu Hao, Xinlei Hu, <strong>Heyin Chen</strong>. (2019).</div>
+          <div class="pub-meta">
+            <span class="pub-journal">Journal of Cleaner Production</span>
+            <span class="pub-badge badge-published">SCI · Published</span>
+          </div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-number">5</div>
+        <div class="pub-content">
+          <div class="pub-title">Determinants of Public Acceptance toward Congestion Charge: Testing the Moderating Effect of Smog Awareness from a Policy Re-Framing Perspective</div>
+          <div class="pub-authors"><strong>Heyin Chen</strong>, Zhilin Liu. (Under Review)</div>
+          <div class="pub-meta">
+            <span class="pub-journal">Habitat International</span>
+            <span class="pub-badge badge-submitted">SSCI · Submitted</span>
+          </div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-number">6</div>
+        <div class="pub-content">
+          <div class="pub-title">Innovative Management Model in Low-Carbon Enterprise</div>
+          <div class="pub-authors"><strong>Heyin Chen</strong>, Rongping Chang, Weina Meng. (2015). <em>(In Chinese)</em></div>
+          <div class="pub-meta">
+            <span class="pub-journal">Shandong Social Science</span>
+            <span class="pub-badge badge-published">CSSCI · Published</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Experience</div>
+      <h2>Research & Professional</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="exp-timeline">
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">Jul 2023 – Feb 2024</div>
+          <div class="exp-org">World Bank Group</div>
+          <div class="exp-location">Washington, D.C.</div>
+        </div>
+        <div class="exp-content">
+          <h3>Research Analyst — Food Systems Resilience (Nature-Based Solutions)</h3>
+          <ul class="exp-bullets">
+            <li>Applied NLP techniques (TF-IDF, word embeddings, topic modeling / LDA) to extract and classify key terms from 50,000+ documents on food system resilience</li>
+            <li>Built clustering models (k-means, hierarchical) in Python to categorize 1,000+ climate-smart technologies, enabling cross-technology comparison for stakeholders</li>
+            <li>Designed SQL-based data integration pipelines merging multi-source databases (Web of Science, Scopus); automated extraction and created R (ggplot2, Shiny) visualization dashboards</li>
+            <li>Produced a peer-reviewed analytical report combining bibliometric analysis and predictive modeling to inform World Bank strategic planning on sustainable food systems</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">Jan 2020 – Present</div>
+          <div class="exp-org">UC Davis</div>
+          <div class="exp-location">Davis, CA</div>
+        </div>
+        <div class="exp-content">
+          <h3>Graduate Research Assistant — Fuel Price Effects on Atlantic HMS Fishery</h3>
+          <ul class="exp-bullets">
+            <li>Built large-scale dataset merging 1M+ high-frequency VMS GPS records with commercial logbook data across 111 ports using Python; implemented spatial algorithms for trip distance and fishing activity classification</li>
+            <li>Applied Cragg's double hurdle model to 16,000+ vessel-trip panel data to estimate fuel price elasticities: –0.57 to –0.82 (participation), –0.13 to –0.23 (fishing intensity)</li>
+            <li>Estimated heterogeneous treatment effects via fixed/mixed effects panel models with vessel-size interactions, revealing asymmetric responses between small and large vessels</li>
+            <li>Automated data processing pipeline in Python for cleaning, geocoding, and merging multiple NOAA data sources; controlled for environmental conditions and temporal trends</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">Jul 2021 – Present</div>
+          <div class="exp-org">UC Davis</div>
+          <div class="exp-location">Davis, CA</div>
+        </div>
+        <div class="exp-content">
+          <h3>Research Assistant — Causal Inference in Common Pool Resource Management</h3>
+          <ul class="exp-bullets">
+            <li>Applied DiD and Synthetic Control methods to evaluate catch share effects on fisheries using 50+ years of panel data covering 170 EEZs and 800 species</li>
+            <li>Cleaned and merged 500,000+ observation dataset from Environmental Defense Fund and RAM Legacy Stock Assessment Database using R</li>
+            <li>Estimated marginal and average treatment effects using parametric and semiparametric methods accounting for selection on unobservables</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">Jul – Sept 2021</div>
+          <div class="exp-org">Stanford University</div>
+          <div class="exp-location">Remote</div>
+        </div>
+        <div class="exp-content">
+          <h3>Research Data Analyst Intern — School of Medicine (COVID-19 Vaccine Effectiveness)</h3>
+          <ul class="exp-bullets">
+            <li>Estimated vaccine treatment effects using Cox proportional hazards models on person-day panel data with 60,000+ incarcerated individuals across 35 California prisons — effectiveness: 74% (first dose), 97% (second dose)</li>
+            <li>Built and cleaned longitudinal dataset merging CDCR testing, vaccination, and demographic records; applied quasi-experimental design with time-varying covariates in Stata</li>
+            <li>Estimated secondary attack rates via difference-in-differences to assess causal impact of vaccination on disease transmission</li>
+            <li>Automated weekly data visualization pipelines in R for real-time monitoring of vaccine effectiveness during the Delta outbreak</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Education</div>
+      <h2>Academic Background</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">PhD in Agricultural & Resource Economics</div>
+        <div class="edu-school">University of California, Davis</div>
+        <div class="edu-meta-row">
+          <span class="edu-year">Expected June 2026</span>
+        </div>
+        <div class="edu-courses">
+          <span>Advisor:</span> Professor James N. Sanchirico<br>
+          <span>Fields:</span> Fisheries Economics, Environmental Policy, Applied Econometrics
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">MS in Agricultural & Resource Economics</div>
+        <div class="edu-school">University of California, Davis</div>
+        <div class="edu-meta-row">
+          <span class="edu-year">June 2020</span>
+          <span class="edu-gpa">GPA 3.71 / 4.0</span>
+        </div>
+        <div class="edu-courses">
+          <span>Courses:</span> Microeconomic Analysis, Applied Econometrics, Economics in Agriculture, Economic Analysis of Resource & Environmental Policies, Demand & Market Analysis, Financial Economics
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">MA in Public Policy & Analysis</div>
+        <div class="edu-school">Tsinghua University</div>
+        <div class="edu-meta-row">
+          <span class="edu-year">July 2019</span>
+          <span class="edu-gpa">GPA 3.7 · Rank 1 / 34</span>
+        </div>
+        <div class="edu-courses">
+          <span>Courses:</span> Public Policy Analysis, Research Methods in Social Sciences, Environment, Climate Change & Governance, Applied Government Big Data Analysis
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">BA in Business Administration</div>
+        <div class="edu-school">Beijing Institute of Technology</div>
+        <div class="edu-meta-row">
+          <span class="edu-year">July 2017</span>
+          <span class="edu-gpa">GPA 95/100 · Rank 1 / 120</span>
+        </div>
+        <div class="edu-courses">
+          <span>Courses:</span> Linear Algebra, Probability & Mathematical Statistics, Applied Statistics, Macroeconomics, Microeconomics, Public Economics, Engineering Economics
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Skills</div>
+      <h2>Technical Expertise</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Statistical & Econometric Software</div>
+        <div class="skill-item">
+          <div class="skill-name">Stata</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">R (tidyverse, ggplot2, data.table)</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Python (pandas, numpy, scikit-learn)</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">SQL (PostgreSQL, MySQL)</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">MATLAB</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Econometric Methods</div>
+        <div class="skill-item">
+          <div class="skill-name">Panel Data (FE, RE, Mixed Effects)</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Double Hurdle / Heckman Selection</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Difference-in-Differences</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Discrete Choice / Nested Logit</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Synthetic Control Methods</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Data & Visualization</div>
+        <div class="skill-item">
+          <div class="skill-name">Large-Scale Data Pipelines</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Spatial Analysis / GIS (VMS data)</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">R Shiny / Dashboard Development</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">NLP / Text Mining (Python)</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">LaTeX / Overleaf</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFERENCES -->
+<section id="conferences">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Presentations</div>
+      <h2>Conference Talks</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="conf-list">
+      <div class="conf-item">
+        <div>
+          <div class="conf-year">2018</div>
+          <div class="conf-venue">APPAM</div>
+        </div>
+        <div class="conf-content">
+          <div class="conf-title">How Do City Governments Localize Global Climate Mitigation Goals? A Case of the Low-Carbon City Pilot Program in China</div>
+          <div class="conf-location">Association for Public Policy Analysis and Management · Washington, DC, USA · November 2018</div>
+        </div>
+      </div>
+      <div class="conf-item">
+        <div>
+          <div class="conf-year">2018</div>
+          <div class="conf-venue">ACSP</div>
+        </div>
+        <div class="conf-content">
+          <div class="conf-title">Transferring Global Climate Challenges to Local Priorities in a Developing Context: A Content Analysis of Local Carbon Action Plans of 51 Chinese Cities</div>
+          <div class="conf-location">Association of Collegiate Schools of Planning · Buffalo, NY, USA · October 2018</div>
+        </div>
+      </div>
+      <div class="conf-item">
+        <div>
+          <div class="conf-year">2018</div>
+          <div class="conf-venue">MIT Media Lab</div>
+        </div>
+        <div class="conf-content">
+          <div class="conf-title">The Impact of Environmental Regulation and Shadow Economy on Environmental Quality: Theory and Empirical Evidence for China Based on City-Level Panel Data</div>
+          <div class="conf-location">Workshop on Innovation, Economic Complexity and Economic Geography · MIT Media Lab, Boston, MA, USA · August 2018</div>
+        </div>
+      </div>
+      <div class="conf-item">
+        <div>
+          <div class="conf-year">2018</div>
+          <div class="conf-venue">PMRC</div>
+        </div>
+        <div class="conf-content">
+          <div class="conf-title">The Impact of Environmental Regulation, the Shadow Economy and Corruption on Environmental Quality: Theory and Empirical Evidence from China</div>
+          <div class="conf-location">Public Management Research Conference · Singapore · May 2018</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEYOND RESEARCH -->
+<section id="beyond">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Beyond Research</div>
+      <h2>Life Outside the Lab</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="beyond-grid">
+      <div class="beyond-card beyond-card--featured">
+        <div class="beyond-icon">🍜</div>
+        <h3>Home Kitchen & Food Exploration</h3>
+        <p>
+          Food is a serious hobby. From slow-braised red pork belly and hand-folded dumplings 
+          to homemade sourdough and regional Chinese dishes rarely found in restaurants — 
+          the kitchen is a second lab, where the experiments are more delicious and the 
+          results are always peer-reviewed by family.
+        </p>
+        <div class="beyond-tags">
+          <span>Chinese Cuisine</span>
+          <span>Baking</span>
+          <span>Fermentation</span>
+          <span>Seasonal Cooking</span>
+        </div>
+      </div>
+      <div class="beyond-card">
+        <div class="beyond-icon">🌏</div>
+        <h3>Culinary Geography</h3>
+        <p>
+          A deep curiosity about how food reflects history, migration, and ecology — 
+          from the fisheries on our dinner plate to the spice trade routes that shaped 
+          modern cuisine. Traveling to eat, and eating to understand.
+        </p>
+      </div>
+      <div class="beyond-card">
+        <div class="beyond-icon">👨‍👩‍👧</div>
+        <h3>Family Time</h3>
+        <p>
+          Life in Davis with a young family. Weekend farmers markets, cooking for loved ones, 
+          and finding the best dim sum within driving distance are taken as seriously as 
+          any research question.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Contact</div>
+      <h2>Get in Touch</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item" style="margin-bottom:28px">
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:hyhchen@ucdavis.edu">hyhchen@ucdavis.edu</a></div>
+        </div>
+        <div class="contact-item" style="margin-bottom:28px">
+          <div class="contact-label">Phone</div>
+          <div class="contact-value">+1 (530) 204-8809</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">Address</div>
+          <div class="contact-value">Department of Agricultural & Resource Economics<br>University of California, Davis<br>1 Shields Ave, Davis, CA 95616</div>
+        </div>
+      </div>
+      <div>
+        <p class="contact-note">
+          I welcome inquiries about my research on fisheries economics, environmental policy, 
+          and applied causal inference. I am open to discussions on potential collaborations, 
+          data sharing, or academic opportunities. My expected graduation is June 2026.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Heyin Chen · UC Davis, Department of Agricultural & Resource Economics</div>
+  <div class="footer-note">PhD Candidate · Expected June 2026</div>
+</footer>
+
+</body>
+</html>
